@@ -1,4 +1,12 @@
 services:
+  hyperborea-legends:
+    name: Hyperborea Legends
+    checker:
+      basedir: ./checkers/hyperborea-legends
+      script: ./hyperborea-legends.checker.py
+      setup: python3 -m pip install --break-system-packages -r requirements.txt
+    vuln:
+      basedir: ./services/hyperborea-legends
   perune:
     name: Perune
     checker:
@@ -7,3 +15,27 @@ services:
       setup: python3 -m pip install --break-system-packages -r requirements.txt
     vuln:
       basedir: ./services/perune
+  rusi-trainer:
+    name: Rusi Trainer
+    checker:
+      basedir: ./checkers/rusi-trainer
+      script: ./rusi-trainer.checker.py
+      setup: python3 -m pip install --break-system-packages -r requirements.txt
+    vuln:
+      basedir: ./services/rusi-trainer
+  rustest:
+    name: RusTest
+    checker:
+      basedir: ./checkers/rustest
+      script: ./rustest.checker.py
+      setup: python3 -m pip install --break-system-packages -r requirements.txt
+    vuln:
+      basedir: ./services/rustest
+  werk:
+    name: Werk
+    checker:
+      basedir: ./checkers/werk
+      script: ./werk.checker.py
+      setup: python3 -m pip install --break-system-packages -r requirements.txt
+    vuln:
+      basedir: ./services/werk
