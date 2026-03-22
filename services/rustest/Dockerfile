@@ -1,8 +1,10 @@
 FROM rust:1.72-slim-buster as builder
 
 WORKDIR /
-RUN apt-get update && \ 
-    apt-get install -y protobuf-compiler && \ 
+RUN printf 'deb http://archive.debian.org/debian buster main\n' > /etc/apt/sources.list && \
+    printf 'Acquire::Check-Valid-Until "false";\n' > /etc/apt/apt.conf.d/99archive && \
+    apt-get update && \
+    apt-get install -y protobuf-compiler && \
     USER=root cargo new --bin rustest
 
 WORKDIR /rustest
@@ -36,7 +38,9 @@ RUN npm run build
 FROM debian:buster-slim
 ARG APP=/usr/src/app
 
-RUN apt-get update \
+RUN printf 'deb http://archive.debian.org/debian buster main\n' > /etc/apt/sources.list \
+    && printf 'Acquire::Check-Valid-Until "false";\n' > /etc/apt/apt.conf.d/99archive \
+    && apt-get update \
     && apt-get install -y ca-certificates tzdata \
     && rm -rf /var/lib/apt/lists/*
 
