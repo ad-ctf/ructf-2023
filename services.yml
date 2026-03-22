@@ -7,14 +7,6 @@ services:
       setup: python3 -m pip install --break-system-packages -r requirements.txt
     vuln:
       basedir: ./services/hyperborea-legends
-  memos:
-    name: Memos
-    checker:
-      basedir: ./checkers/memos
-      script: ./memos.checker.py
-      setup: python3 -m pip install --break-system-packages -r requirements.txt
-    vuln:
-      basedir: ./services/memos
   perune:
     name: Perune
     checker:
